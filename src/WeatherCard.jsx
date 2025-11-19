@@ -8,6 +8,8 @@ export function WeatherCard({ current }) {
         <p>💨 Viento: {current.windspeed} km/h</p>
         <p>🌧 Prob. lluvia: {current.precipprob || 0}%</p>
       </div>
+
+      
     );
   }
   

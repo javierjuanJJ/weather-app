@@ -31,7 +31,7 @@ export default function App() {
         const data = await fetchWeather(coords);
         setWeather(data);
         setLocation(data.resolvedAddress);
-      } catch {}
+      } catch { }
     });
   }, []);
 
@@ -52,6 +52,16 @@ export default function App() {
       {loading && <p>Cargando clima...</p>}
       {error && <p className="text-red-500">{error}</p>}
       {weather && <WeatherCard current={weather.currentConditions} />}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-4">
+        {weather.days[0].hours.map((hour) => (
+          <div key={hour.datetime} className="bg-white p-2 rounded shadow text-sm">
+            <p>{hour.datetime}</p>
+            <p>{hour.temp}°C</p>
+            <p>{hour.conditions}</p>
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 }
